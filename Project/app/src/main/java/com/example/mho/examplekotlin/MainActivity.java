@@ -1,5 +1,6 @@
 package com.example.mho.examplekotlin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -34,12 +35,13 @@ public class MainActivity extends AppCompatActivity {
                 boolean isValid = Validations.validatePassword(password);
                 Log.d(TAG, "OnClick: "+isValid);
                 if(isValid){
-                    //TODO
-                }else{
-                    Toast.makeText(MainActivity.this,
-                            "Incorrect password!",
-                            Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(MainActivity.this, ListActivity.class));
+                    return;
                 }
+
+                Toast.makeText(MainActivity.this,
+                        "Incorrect password!",
+                        Toast.LENGTH_LONG).show();
             }
         });
 
