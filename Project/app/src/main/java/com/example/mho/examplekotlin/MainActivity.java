@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Created by Mauricio Hernández on 09-Nov-17.
@@ -31,8 +32,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean isValid = Validations.validatePassword(password);
-                Log.e(TAG, "OnClick: "+isValid);
+                Log.d(TAG, "OnClick: "+isValid);
+                if(isValid){
+                    //TODO
+                }else{
+                    Toast.makeText(MainActivity.this,
+                            "Incorrect password!",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
+
+        BasicPOJO basicPOJO = new BasicPOJO("Title", "Desc1");
+        BasicPOJO basicPOJO2 = new BasicPOJO("Title");
+
+        Log.d(TAG, "basicPOJO: "+basicPOJO.toString());
+        Log.d(TAG, "basicPOJO2: "+basicPOJO2.toString());
     }
 }
