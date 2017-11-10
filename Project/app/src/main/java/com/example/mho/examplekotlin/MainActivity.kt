@@ -17,6 +17,7 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var user: EditText
     lateinit var password: EditText
     lateinit var login: Button //lateinit Aún sin inicializar
     private val TAG = MainActivity::class.java.simpleName
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        user = findViewById(R.id.loginUser)
         password = findViewById(R.id.loginPass)
         login = findViewById(R.id.loginSend)
 
@@ -49,7 +51,9 @@ class MainActivity : AppCompatActivity() {
                 putBoolean("LogIn", true)
             }
 
-            startActivity(Intent(this@MainActivity, ListActivity::class.java))
+            val intent = Intent(this@MainActivity, ListActivity::class.java)
+            intent.putExtra("UserKotlin", user.text.toString())
+            startActivity(intent)
             finish()
             return
         }

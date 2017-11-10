@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,14 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        RecyclerView list = (RecyclerView) findViewById(R.id.list);
+        TextView title = findViewById(R.id.text_title_list);
+        if(getIntent() != null){
+            Bundle extras = getIntent().getExtras();
+            String titleLabel = extras.getString("UserKotlin", "");
+            title.setText(titleLabel);
+        }
+
+        RecyclerView list = findViewById(R.id.list);
 
         LinearLayoutManager linearLayoutManager =
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
