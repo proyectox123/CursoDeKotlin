@@ -24,8 +24,10 @@ public class ListActivity extends AppCompatActivity {
         TextView title = findViewById(R.id.text_title_list);
         if(getIntent() != null){
             Bundle extras = getIntent().getExtras();
-            String titleLabel = extras.getString("UserKotlin", "");
-            title.setText(titleLabel);
+            if(extras != null) {
+                String titleLabel = "Welcome: " + extras.getString("UserKotlin", "");
+                title.setText(titleLabel);
+            }
         }
 
         RecyclerView list = findViewById(R.id.list);
