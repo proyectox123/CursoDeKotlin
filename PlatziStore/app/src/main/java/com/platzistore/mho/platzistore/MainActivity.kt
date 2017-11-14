@@ -2,9 +2,9 @@ package com.platzistore.mho.platzistore
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.GridLayoutManager
+import com.platzistore.mho.platzistore.model.ItemLanding
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,14 +12,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        label_hello_world.text = "Hello Android Extensions!"
+        recyclerViewLanding.layoutManager = GridLayoutManager(this, 2)
 
-        //toastShort("short Toast!")
-
-        toast("short Toast!")
-
-        label_hello_world.setOnClickListener {
-            startActivity<DetailActivity>("any_text" to "Hello from Anko!")
+        val itemsShop = (0..20).map {
+            ItemLanding("Title $it", "Description $it", 200.00 + it)
         }
+
+        val adapter = AdapterLanding(itemsShop)
+        recyclerViewLanding.adapter = adapter
     }
 }
