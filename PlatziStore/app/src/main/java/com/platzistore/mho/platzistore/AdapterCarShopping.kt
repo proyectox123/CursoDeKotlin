@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull
 /**
  * Created by Mauricio Hernández on 15-Nov-17.
  */
-class AdapterCarShopping(@NotNull val dataList: List<ItemListPOJO>) : RecyclerView.Adapter<AdapterCarShopping.Holder>(){
+class AdapterCarShopping(@NotNull var dataList: List<ItemListPOJO>) : RecyclerView.Adapter<AdapterCarShopping.Holder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): Holder =
             Holder(ItemList().createView(AnkoContext.Companion.create(parent!!.context, this, false)))
@@ -23,6 +23,11 @@ class AdapterCarShopping(@NotNull val dataList: List<ItemListPOJO>) : RecyclerVi
     }
 
     override fun getItemCount(): Int = dataList.size
+
+    fun addItems(dataList: List<ItemListPOJO>){
+        this.dataList = dataList
+        notifyDataSetChanged()
+    }
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){
 

@@ -22,13 +22,5 @@ class MainActivity : AppCompatActivity() {
 
         val adapter = AdapterLanding(itemsShop)
         recyclerViewLanding.adapter = adapter
-
-//        recyclerViewLanding.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
-//        val itemsShop = (0..20).map {
-//            ItemListPOJO("Title $it", "Description $it", 200.00 + it)
-//        }
-//
-//        val adapter = AdapterCarShopping(itemsShop)
-//        recyclerViewLanding.adapter = adapter
     }
 }

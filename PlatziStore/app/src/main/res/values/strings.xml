@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">PlatziStore</string>
+
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales lacinia eros ut convallis. Proin nec nisl ac nunc ornare cursus. Aenean suscipit mi libero, sit amet rutrum augue aliquam id. Aliquam vel justo sit amet nibh fermentum tincidunt. Aenean sed maximus massa. In et viverra orci, at finibus leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent maximus pellentesque magna eu ultrices. Sed elit ante, elementum eu velit nec, sollicitudin mattis massa.</string>
+
     <string name="transition_title">transition_title</string>
     <string name="transition_desc">transition_desc</string>
     <string name="transition_price">transition_price</string>
     <string name="transition_header">transition_header</string>
+
+    <string name="button_detail_buy">Buy</string>
 </resources>

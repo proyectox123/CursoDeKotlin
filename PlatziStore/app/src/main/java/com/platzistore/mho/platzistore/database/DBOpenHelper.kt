@@ -26,7 +26,7 @@ class DBOpenHelper(context: Context) : ManagedSQLiteOpenHelper(context, "platzis
     override fun onCreate(db: SQLiteDatabase?) {
         val id = "id" to INTEGER + PRIMARY_KEY
         val name = "name" to TEXT
-        val desc = "desc" to TEXT
+        val desc = "Desc" to TEXT
         val price = "price" to TEXT
 
         db?.createTable("Productos", true, id, name, desc, price)
