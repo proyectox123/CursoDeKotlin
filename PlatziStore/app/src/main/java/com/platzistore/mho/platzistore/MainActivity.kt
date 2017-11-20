@@ -17,16 +17,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        useCoroutines()
+        //useCoroutines()
+        platziStoreLogic()
+    }
 
-//        recyclerViewLanding.layoutManager = GridLayoutManager(this, 2)
-//
-//        val itemsShop = (0..20).map {
-//            ItemLanding("Title $it", "Description $it", 200.00 + it)
-//        }
-//
-//        val adapter = AdapterLanding(itemsShop)
-//        recyclerViewLanding.adapter = adapter
+    private fun platziStoreLogic(){
+        recyclerViewLanding.layoutManager = GridLayoutManager(this, 2)
+
+        val itemsShop = (0..20).map {
+            ItemLanding("Title $it", "Description $it", 200.00 + it)
+        }
+
+        val adapter = AdapterLanding(itemsShop)
+        recyclerViewLanding.adapter = adapter
     }
 
     private fun useCoroutines(){
