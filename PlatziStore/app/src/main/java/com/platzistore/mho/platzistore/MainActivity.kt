@@ -7,6 +7,9 @@ import android.support.v7.widget.LinearLayoutManager
 import com.platzistore.mho.platzistore.model.ItemLanding
 import com.platzistore.mho.platzistore.model.ItemListPOJO
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.async
+import org.jetbrains.anko.coroutines.experimental.bg
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,13 +17,35 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recyclerViewLanding.layoutManager = GridLayoutManager(this, 2)
+        useCoroutines()
 
-        val itemsShop = (0..20).map {
-            ItemLanding("Title $it", "Description $it", 200.00 + it)
+//        recyclerViewLanding.layoutManager = GridLayoutManager(this, 2)
+//
+//        val itemsShop = (0..20).map {
+//            ItemLanding("Title $it", "Description $it", 200.00 + it)
+//        }
+//
+//        val adapter = AdapterLanding(itemsShop)
+//        recyclerViewLanding.adapter = adapter
+    }
+
+    private fun useCoroutines(){
+        recyclerViewLanding.layoutManager = LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL,
+                false)
+
+        async(UI){
+            val data = bg{
+                (0..3000).map {
+                    ItemListPOJO("Row $it", "", 0.0)
+                }
+            }
+            showData(data.await())
         }
+    }
 
-        val adapter = AdapterLanding(itemsShop)
+    private fun showData(await: List<ItemListPOJO>) {
+        val adapter = AdapterCarShopping(await)
         recyclerViewLanding.adapter = adapter
     }
 }
