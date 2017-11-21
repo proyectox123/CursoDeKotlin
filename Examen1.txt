@@ -1,0 +1,4 @@
+Examen 1
+¿Para qué plataformas podemos desarrollar con Kotlin? 
+¿Qué etiqueta deberías utilizar para renombrar una función y poder usarla en Java? 
+¿Qué modificador de acceso se requiere para que una clase pueda heredar a otra? 
