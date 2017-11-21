@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import com.platzistore.mho.platzistore.api.Endpoints
+import com.platzistore.mho.platzistore.api.pojo.PayloadItem
 import com.platzistore.mho.platzistore.api.pojo.ResponseProduct
 import com.platzistore.mho.platzistore.model.ItemLanding
 import com.platzistore.mho.platzistore.model.ItemListPOJO
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<ResponseProduct>?, response: Response<ResponseProduct>?) {
                 if(response?.code() == 200){
                     Log.e("Response", "Message ${response.body().toString()}")
-                    response.body()?.payload
+                    fillRecycler(response.body()?.payload)
                 }
             }
 
@@ -57,6 +58,25 @@ class MainActivity : AppCompatActivity() {
 //
 //        val adapter = AdapterLanding(itemsShop)
 //        recyclerViewLanding.adapter = adapter
+    }
+
+    private fun fillRecycler(payload: List<PayloadItem?>?) {
+        val products = payload?.map {
+            it?.let { product ->
+                with(product){
+                    ItemLanding(title ?: "",
+                            shortDesc ?: "",
+                            price ?: 0.0,
+                            imgUrl?: "")
+                }
+            }
+        }?.filter {
+            val price = it?.price ?: 0.0
+            price > 205
+        }
+
+        val adapter = AdapterLanding(products)
+        recyclerViewLanding.adapter = adapter
     }
 
     private fun useCoroutines(){
